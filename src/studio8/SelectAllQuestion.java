@@ -4,16 +4,9 @@ import support.cse131.NotYetImplementedException;
 
 public class SelectAllQuestion extends MultipleChoiceQuestion {
 
-	/**
-	 * Constructor
-	 * 
-	 * @param prompt
-	 * @param answer
-	 * @param choices
-	 */
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		// Hint: 1 point per choice
-		throw new NotYetImplementedException();
+		super(prompt, answer, choices.length, choices);
 	}
 	
 	/**
@@ -21,7 +14,7 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	 * @param String givenAnswer to check for points
 	 */
 	public int checkAnswer(String givenAnswer) {
-		throw new NotYetImplementedException();
+		return getChoices().length - findMissingCorrectAnswers(givenAnswer) - findIncorrectGivenAnswers(givenAnswer);
 	}
 
 	/**
@@ -67,6 +60,7 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	}	
 	
 	public static void main(String[] args) {	
-		
+		String[] choices = {"red", "blue", "egg", "brown"};
+		Question q1 = new SelectAllQuestion("What are examples of colors? ", "red, blue, and brown", choices);
 	}
 }
